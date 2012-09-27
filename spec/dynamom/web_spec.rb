@@ -41,4 +41,11 @@ describe DynaMom::Web do
       put '/tables', payload
     end
   end
+
+  describe 'DELETE /tables/:name' do |name|
+    it 'returns ok' do
+      delete '/tables/foo'
+      last_response.should be_ok
+    end
+  end
 end

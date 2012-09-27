@@ -17,5 +17,9 @@ module DynaMom
 
       DB.create_table(name, read, write, hash_key)
     end
+
+    delete '/tables/:name' do |name|
+      DB.delete_table(name)
+    end
   end
 end
