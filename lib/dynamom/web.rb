@@ -13,9 +13,9 @@ module DynaMom
       name = data['name']
       read = data['read'] || 1
       write = data['write'] || 1
-      hash_key = data['hash_key']
+      opts = data['opts']
 
-      DB.create_table(name, read, write, hash_key)
+      DB.create_table(name, read, write, opts)
     end
 
     delete '/tables/:name' do |name|
