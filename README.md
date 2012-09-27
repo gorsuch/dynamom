@@ -1,5 +1,7 @@
 # Dynamom
 
+[![Build Status](https://secure.travis-ci.org/gorsuch/dynamom.png)](http://travis-ci.org/gorsuch/dynamom)
+
 TODO: Write a gem description
 
 ## Installation
