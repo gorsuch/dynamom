@@ -30,7 +30,7 @@ describe DynaMom::Web do
   end
 
   describe 'PUT /tables/:name' do |name|
-    let(:payload) { {:name => 'foo', :read => 1, :write => 1, :hash_key => { :id => :string }}.to_json }
+    let(:payload) { {:name => 'foo', :read => 1, :write => 1, :opts => { :hash_key => { :id => :string } }}.to_json }
 
     it 'returns ok' do
       DynaMom::DB.stub(:create_table) { }
@@ -39,7 +39,7 @@ describe DynaMom::Web do
     end
 
     it 'makes a call to DB.create_table' do
-      DynaMom::DB.should_receive(:create_table).with('foo', 1, 1, {'id'=> 'string'})
+      DynaMom::DB.should_receive(:create_table).with('foo', 1, 1, {'hash_key' => {'id'=> 'string'}})
       put '/tables', payload
     end
   end
