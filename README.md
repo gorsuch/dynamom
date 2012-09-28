@@ -2,7 +2,9 @@
 
 [![Build Status](https://secure.travis-ci.org/gorsuch/dynamom.png)](http://travis-ci.org/gorsuch/dynamom)
 
-TODO: Write a gem description
+A DynamoDB management API.
+
+Current supports basic provisioning, will plan to support IAM key generation as well.
 
 ## Installation
 
@@ -20,7 +22,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Standard `Rack` app:
+
+```bash
+$ bundle exec rackup -I lib
+```
 
 ## Contributing
 
