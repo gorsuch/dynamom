@@ -7,8 +7,18 @@ module DynaMom
     end
 
     put '/tables/:name' do |name|
-      data = JSON.parse(request.body.read, :symbolize_names => true)
-      DB.create_table(name, data)
+      read, write, hash_key, hash_key_type, range_key, range_key_type = params[:read].to_i, params[:write].to_i, params[:hash_key], params[:hash_key_type], params[:range_key], params[:range_key_type]
+
+      opts = {}
+      if hash_key and hash_key_type
+        opts[:hash_key] = { hash_key.to_sym => hash_key_type.to_sym }
+      end
+
+      if range_key and range_key_type
+        opts[:range_key] = { range_key.to_sym => range_key_type.to_sym } 
+      end
+      
+      DB.create_table(name, read, write, opts)
     end
 
     delete '/tables/:name' do |name|

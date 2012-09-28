@@ -2,19 +2,7 @@ module DynaMom
   module DB
     extend self
 
-    def create_table(name, data={})
-      read = data[:read] || 1
-      write = data[:write] || 1
-      opts = {}
-      
-      if hash_key = data[:hash_key]
-        opts[:hash_key] = { hash_key.keys.first => hash_key.values.first.to_sym }
-      end
-
-      if range_key = data[:range_key]
-        opts[:range_key] = { range_key.keys.first => range_key.values.first.to_sym } 
-      end
-
+    def create_table(name, read, write, opts)
       dynamo.tables.create(name, read, write, opts)
     end
 
