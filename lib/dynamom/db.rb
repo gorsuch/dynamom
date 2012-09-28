@@ -2,8 +2,9 @@ module DynaMom
   module DB
     extend self
 
-    def create_table(name, read, write, opts={})
-      dynamo.tables.create(name, read, write, opts)
+    def create_table(opts={})
+      
+      #dynamo.tables.create(name, read, write, opts)
     end
 
     def delete_table(name)

@@ -8,14 +8,8 @@ module DynaMom
 
     put '/tables' do
       json = request.body.read
-      data = JSON.parse(json)
-
-      name = data['name']
-      read = data['read'] || 1
-      write = data['write'] || 1
-      opts = data['opts']
-
-      DB.create_table(name, read, write, opts)
+      opts = JSON.parse(json, :symbolize_names => true)
+      DB.create_table(opts)
     end
 
     delete '/tables/:name' do |name|

@@ -39,7 +39,7 @@ describe DynaMom::Web do
     end
 
     it 'makes a call to DB.create_table' do
-      DynaMom::DB.should_receive(:create_table).with('foo', 1, 1, {'hash_key' => {'id'=> 'string'}})
+      DynaMom::DB.should_receive(:create_table).with(JSON.parse(payload, :symbolize_names => true)) { }
       put '/tables', payload
     end
   end
