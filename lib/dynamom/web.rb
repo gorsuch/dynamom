@@ -6,9 +6,9 @@ module DynaMom
       DB.tables.to_json
     end
 
-    put '/tables' do
+    put '/tables/:name' do |name|
       data = JSON.parse(request.body.read, :symbolize_names => true)
-      DB.create_table(data)
+      DB.create_table(name, data)
     end
 
     delete '/tables/:name' do |name|

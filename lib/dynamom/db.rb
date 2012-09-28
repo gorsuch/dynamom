@@ -2,8 +2,7 @@ module DynaMom
   module DB
     extend self
 
-    def create_table(data={})
-      name = data[:name] 
+    def create_table(name, data={})
       read = data[:read] || 1
       write = data[:write] || 1
       opts = {}
