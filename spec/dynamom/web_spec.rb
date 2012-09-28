@@ -12,6 +12,7 @@ describe DynaMom::Web do
 
   describe 'GET /tables' do
     it 'returns ok' do
+      DynaMom::DB.stub(:tables) { [] }
       get '/tables'
       last_response.should be_ok
     end
@@ -32,6 +33,7 @@ describe DynaMom::Web do
     let(:payload) { {:name => 'foo', :read => 1, :write => 1, :hash_key => { :id => :string }}.to_json }
 
     it 'returns ok' do
+      DynaMom::DB.stub(:create_table) { }
       put '/tables', payload
       last_response.should be_ok
     end
@@ -44,6 +46,7 @@ describe DynaMom::Web do
 
   describe 'DELETE /tables/:name' do |name|
     it 'returns ok' do
+      DynaMom::DB.stub(:delete_table).with('foo')
       delete '/tables/foo'
       last_response.should be_ok
     end
