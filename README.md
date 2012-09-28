@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/gorsuch/dynamom.png)](http://travis-ci.org/gorsuch/dynamom)
 
-A DynamoDB management API.
+An experimental DynamoDB management API
 
 Current supports basic provisioning, will plan to support IAM key generation as well.
 
