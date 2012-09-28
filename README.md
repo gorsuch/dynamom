@@ -1,4 +1,4 @@
-# Dynamom
+# DynaMom
 
 [![Build Status](https://secure.travis-ci.org/gorsuch/dynamom.png)](http://travis-ci.org/gorsuch/dynamom)
 
