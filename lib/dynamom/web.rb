@@ -7,9 +7,8 @@ module DynaMom
     end
 
     put '/tables' do
-      json = request.body.read
-      opts = JSON.parse(json, :symbolize_names => true)
-      DB.create_table(opts)
+      data = JSON.parse(request.body.read, :symbolize_names => true)
+      DB.create_table(data)
     end
 
     delete '/tables/:name' do |name|
