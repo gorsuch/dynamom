@@ -2,9 +2,25 @@ module DynaMom
   module DB
     extend self
 
-    def create_table(opts={})
+    def create_table(data={})
+      name = data[:name] 
+      read = data[:read] || 1
+      write = data[:write] || 1
+      range_key = nil
       
-      #dynamo.tables.create(name, read, write, opts)
+      if hash_key = data[:hash_key]
+        hash_key = { hash_key.keys.first => hash_key.values.first.to_sym }
+      end
+
+      if range_key = data[:range_key]
+        range_key = { range_key.keys.first => range_key.values.first.to_sym } 
+      end
+
+      opts = {}
+      opts[:hash_key] = hash_key
+      opts[:range_key] = range_key
+
+      dynamo.tables.create(name, read, write, opts)
     end
 
     def delete_table(name)
